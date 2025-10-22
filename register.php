@@ -20,19 +20,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($check_stmt->fetch()) {
             $message = 'Bu e-posta adresi zaten kullanılıyor';
             $message_type='danger';
-    }else{
-        $new_uuid = generate_uuid_v4();
+        }else{
+            $new_uuid = generate_uuid_v4();
 
-        $stmt = $db->prepare("INSERT INTO User (id,full_name,email,password) VALUES (?,?,?,?)");
-        $stmt->execute([$new_uuid,$full_name,$email,$password]);
+            $stmt = $db->prepare("INSERT INTO User (id,full_name,email,password) VALUES (?,?,?,?)");
+            $stmt->execute([$new_uuid,$full_name,$email,$password]);
         
 
-        $_SESSION['flash_message']=[
-            'type' => 'success',
-            'text' => 'Kayıt Başarılı Giriş Yapabilirsiniz'
-        ];
-        header("Location: login.php");
-        exit;
+            $_SESSION['flash_message']=[
+                'type' => 'success',
+                'text' => 'Kayıt Başarılı Giriş Yapabilirsiniz'
+            ];
+            header("Location: login.php");
+            exit;
 
     }
     } catch (\Throwable $th) {
@@ -56,9 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php
                     if ($message) {
                         echo '<div class="alert alert-' .htmlspecialchars($message_type). '" role="alert">'. htmlspecialchars($message) . '</div>';
-                    }
-                
-                
+                       }
+
                 ?>
                 
                 <form method="post">
