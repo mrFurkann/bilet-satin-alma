@@ -25,4 +25,8 @@ docker-compose up --build
 ## Siteye Erişim
 - Tarayıcıdan açın: http://localhost:8080
 
+## Siteye Erişim
+- Test İçin Admin Hesabı Bulunmaktadır
+- email: admin@gmail.com  password: admin123
+- Sistemde bir firma ve bir sefer vardır Bartın-Trabzon 2025-10-30 tarihli. Bu tarihten sonra bu sefer listelenmeyecektir. Dilerseniz firma admini oluşturup sefer ekleyebilirsiniz.
 
