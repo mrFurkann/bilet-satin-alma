@@ -47,7 +47,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light ms-2" href="register.php">
+                        <a class="nav-link btn btn-outline-primary ms-2" href="register.php">
                             <i class="bi bi-person-plus"></i> Kayıt Ol
                         </a>
                     </li>
