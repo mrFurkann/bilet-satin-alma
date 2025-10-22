@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $stmt = $db->prepare("INSERT INTO User (id,full_name,email,password) VALUES (?,?,?,?)");
         $stmt->execute([$new_uuid,$full_name,$email,$password]);
-
+        
 
         $_SESSION['flash_message']=[
             'type' => 'success',

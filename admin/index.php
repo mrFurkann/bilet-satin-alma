@@ -4,7 +4,46 @@ ob_start();
 require '../includes/config.php';
 require '../includes/auth.php';
 if (!isAdmin()) {
-    header("Location: ../login.php");
+    header('HTTP/1.1 403 Forbidden');
+    echo '
+    <!DOCTYPE html>
+        <html>
+            <head>
+                <meta charset="UTF-8">
+                <title>403 - Erişim Engellendi</title>
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+                <style>
+                    .error-container {
+                        min-height: 100vh;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #f8f9fa; /* Açık gri arka plan */
+                    }
+                    .error-box {
+                        background: #fff;
+                        padding: 50px;
+                        border-radius: 10px;
+                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="error-container">
+                    <div class="error-box text-center">
+                        <h1 class="display-1 fw-bold text-danger">403</h1>
+                        <h2 class="mb-3">Erişim Engellendi</h2>
+                        <p class="lead mb-4">Üzgünüz, bu sayfayı görüntüleme yetkiniz bulunmamaktadır.</p>
+                        <p class="text-muted">Lütfen yönetici ile iletişime geçin veya ana sayfaya geri dönün.</p>
+                        
+                        <a href="../index.php" class="btn btn-primary btn-lg mt-3">
+                            <i class="bi bi-house-door-fill"></i> Ana Sayfaya Dön
+                        </a>
+                        
+                        </div>
+                </div>
+            </body>
+        </html>';
     exit; 
 }
 

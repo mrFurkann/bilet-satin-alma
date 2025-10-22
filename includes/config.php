@@ -1,8 +1,8 @@
 <?php 
 
 date_default_timezone_set('Europe/Istanbul');
-if (!defined('BASE_PATH')) {
-    define('BASE_PATH', '');
+if (!defined('DEFAULT_PATH')) {
+    define('DEFAULT_PATH', '');
 
 }
 try{

@@ -44,7 +44,7 @@ if (isset($_SESSION['flash_message'])) {
                             $redirect_url = 'index.php';
                             break;
                     }
-                header('Location: ' . $redirect_url,true,303);
+                header('Location: ' . $redirect_url,true,303); //303 girilen istek başarıyla işlendi şimdi yönelndirilebilrisin ve tekrar yönlendirildiğinde değişmez en son doğru kayıtı alır. See other
                 exit;
             }else 
                 {
