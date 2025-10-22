@@ -12,13 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 
-    // Eposta Kontrolu için oluştuduğumuz kısım
-    $check_stmt =  $db -> prepare("SELECT email FROM User WHERE email = ?");
-    $check_stmt ->execute([$email]);
+    try {
+         // Eposta Kontrolu için oluştuduğumuz kısım
+        $check_stmt =  $db -> prepare("SELECT email FROM User WHERE email = ?");
+        $check_stmt ->execute([$email]);
 
-    if ($check_stmt->fetch()) {
-        $message = 'Bu e-posta adresi zaten kullanılıyor';
-        $message_type='danger';
+        if ($check_stmt->fetch()) {
+            $message = 'Bu e-posta adresi zaten kullanılıyor';
+            $message_type='danger';
     }else{
         $new_uuid = generate_uuid_v4();
 
@@ -34,6 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
 
     }
+    } catch (\Throwable $th) {
+        $message = 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin.';
+        $message_type = 'danger';
+    }
+
+
+   
 
 }
 ?>
@@ -47,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <?php
                     if ($message) {
-                        echo '<div class="alert alert-' .$message_type. '" role="alert">'. $message . '</div>';
+                        echo '<div class="alert alert-' .htmlspecialchars($message_type). '" role="alert">'. htmlspecialchars($message) . '</div>';
                     }
                 
                 
