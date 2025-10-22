@@ -11,7 +11,7 @@ Bu proje PHP + SQLite ile hazırlanmıştır ve Docker ile çalıştırılabilir
 
 ## Gereksinimler
 - Docker
-Docker Compose
+- Docker Compose
 
 ## Kurulum ve Çalıştırma
 Projeyi GitHub’dan klonlayın ve proje klasörüne girin:
@@ -23,6 +23,6 @@ docker-compose up --build
 ```
 
 ## Siteye Erişim
-Tarayıcıdan açın: http://localhost:8080
+- Tarayıcıdan açın: http://localhost:8080
 
 
