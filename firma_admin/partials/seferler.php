@@ -54,8 +54,8 @@ $capacity = $trip['capacity'] ?? '';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['kaydet'])) {
-    $departure_city = $_POST['departure_city'];
-    $destination_city = $_POST['destination_city'];
+    $departure_city =Transliterator::create('tr-lower')->transliterate($_POST['departure_city']); //mb_strtolower kullandığımda kullanıcı eğer BARTIN girerse bartin olarak kaydediyor ve buda istemediğim bir şey oluyo Transliterator ile turkçe karakterle beraber işlem başarılı oluyor
+    $destination_city =Transliterator::create('tr-lower')->transliterate($_POST['destination_city']);
     $trip_date = $_POST['trip_date'];
     $departure_time = $_POST['departure_time'];
     $arrival_time = $_POST['arrival_time'];
@@ -163,7 +163,7 @@ $liste = $seferler->fetchAll(PDO::FETCH_ASSOC);
                 <?php foreach($liste as $s): ?>
                     <tr>
                         <td><?= htmlspecialchars($s['id']) ?></td>
-                        <td><?= htmlspecialchars($s['departure_city']) ?> → <?= htmlspecialchars($s['destination_city']) ?></td>
+                        <td><?= Transliterator::create('tr-title')->transliterate(htmlspecialchars($s['departure_city'])) ?> → <?= Transliterator::create('tr-title')->transliterate(htmlspecialchars($s['destination_city'])) ?></td>
                         <td><?= date('d.m.Y', strtotime($s['departure_time'])) ?></td>
                         <td><?= date('H:i', strtotime($s['departure_time'])) ?> - <?= date('H:i', strtotime($s['arrival_time'])) ?></td>
                         <td><?= number_format($s['price'], 2, ',', '.') ?> ₺</td>

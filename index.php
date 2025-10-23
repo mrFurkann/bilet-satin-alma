@@ -22,8 +22,8 @@ $userCoupons = [];
 //Sefer arama
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['search_trip'])) {
     $searchPerformed = true;
-    $departure_city = trim($_POST['departure_city']);
-    $destination_city = trim($_POST['destination_city']);
+    $departure_city =Transliterator::create('tr-lower')->transliterate(trim($_POST['departure_city']));
+    $destination_city =Transliterator::create('tr-lower')->transliterate(trim($_POST['destination_city']));
     $departure_time = trim($_POST['departure_time']);
 
     $stmt = $db->prepare("
@@ -131,8 +131,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['book_seats'])) {
                         <?php foreach ($trips as $trip): ?>
                             <tr>
                                 <td><?= htmlspecialchars($trip['company_name']) ?></td>
-                                <td><?= htmlspecialchars($trip['departure_city']) ?></td>
-                                <td><?= htmlspecialchars($trip['destination_city']) ?></td>
+                                <td><?= Transliterator::create('tr-title')->transliterate(htmlspecialchars($trip['departure_city'])) ?></td>
+                                <td><?= Transliterator::create('tr-title')->transliterate(htmlspecialchars($trip['destination_city'])) ?></td>
                                 <td><?= date('d.m.Y H:i', strtotime($trip['departure_time'])) ?></td>
                                 <td><?= number_format($trip['price'], 2) ?> ₺</td>
                                 <td>
