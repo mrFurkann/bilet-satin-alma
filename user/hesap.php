@@ -22,7 +22,6 @@ switch ($role) {
     case 'company_admin':
         $role = 'Firma Admin';
     default:
-        $role = 'Ziyaretçi';
         break;
 }
 ?>
