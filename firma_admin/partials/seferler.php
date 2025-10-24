@@ -128,7 +128,7 @@ $liste = $seferler->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="col-md-3">
                 <label class="form-label">Koltuk</label>
-                <input type="number" name="capacity" class="form-control" value="<?= htmlspecialchars($capacity) ?>" min="10" max="60" required>
+                <input type="number" name="capacity" class="form-control" value="<?= htmlspecialchars($capacity) ?>" min="10" max="100" required>
             </div>
 
             <div class="col-12 mt   -4">

@@ -156,10 +156,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['book_seats'])) {
     <?php endif; ?>
 
     <!-- Koltuk seçimi -->
-    <?php if ($showSeatSelection && $tripForBooking): ?>
+    <?php if ($showSeatSelection && $tripForBooking): ?> 
         <div class="mt-5 p-4 border rounded shadow-sm bg-white">
             <h3 class="text-center text-primary">Koltuk Seçimi - <?= htmlspecialchars($tripForBooking['company_name']) ?></h3>
-            <p class="text-center"><?= date('d.m.Y H:i', strtotime($tripForBooking['departure_time'])) ?> | <?= htmlspecialchars($tripForBooking['departure_city']) ?> → <?= htmlspecialchars($tripForBooking['destination_city']) ?></p>
+            <p class="text-center"><?= date('d.m.Y H:i', strtotime($tripForBooking['departure_time'])) ?> | <?=Transliterator::create('tr-title')->transliterate(htmlspecialchars($tripForBooking['departure_city'])) ?> → <?=Transliterator::create('tr-title')->transliterate(htmlspecialchars($tripForBooking['destination_city'])) ?> </p> 
             <hr>
 
             <form method="post" action="bilet_al.php">

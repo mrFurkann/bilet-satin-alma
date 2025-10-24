@@ -179,7 +179,7 @@ $pdf->SetFont('DejaVu', '', 10);
 $pdf->Cell(0, 5, '* Bu bilet, fatura yerine gecmektedir. iyi yolculuklar dileriz!', 0, 1, 'C');
 
 
-$pdf->Output();
+$pdf->Output('D',turkce_karakter_cevir(ucfirst($ticket['destination_city']))."-".$ticket['seat_number'].'.pdf');;
 
 ?>
 

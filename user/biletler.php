@@ -94,8 +94,8 @@ foreach ($tickets as $t) {
                         <strong><?= htmlspecialchars($t['company_name']) ?></strong>
                         <span class="badge bg-light text-success">Aktif</span>
                     </div>
-                    <div class="ticket-body">
-                        <p><i class="bi bi-geo-alt-fill"></i> <?= htmlspecialchars($t['departure_city']) ?> → <?= htmlspecialchars($t['destination_city']) ?></p>
+                    <div class="ticket-body"> 
+                        <p><i class="bi bi-geo-alt-fill"></i> <?=Transliterator::create('tr-title')->transliterate(htmlspecialchars($t['departure_city'])) ?> → <?=Transliterator::create('tr-title')->transliterate(htmlspecialchars($t['destination_city'])) ?></p>
                         <p><i class="bi bi-calendar-event"></i> <?= date('d.m.Y H:i', strtotime($t['departure_time'])) ?></p>
                         <p><i class="bi bi-chair"></i> Koltuk(lar): <?= htmlspecialchars($t['seats']) ?></p>
                         <p><i class="bi bi-cash"></i> Fiyat: <strong><?= number_format($t['total_price'], 2) ?> ₺</strong></p>
@@ -135,7 +135,7 @@ foreach ($tickets as $t) {
                         <span class="badge bg-light text-secondary">Geçmiş</span>
                     </div>
                     <div class="ticket-body">
-                        <p><i class="bi bi-geo-alt-fill"></i> <?= htmlspecialchars($t['departure_city']) ?> → <?= htmlspecialchars($t['destination_city']) ?></p>
+                         <p><i class="bi bi-geo-alt-fill"></i> <?=Transliterator::create('tr-title')->transliterate(htmlspecialchars($t['departure_city'])) ?> → <?=Transliterator::create('tr-title')->transliterate(htmlspecialchars($t['destination_city'])) ?></p>
                         <p><i class="bi bi-calendar-event"></i> <?= date('d.m.Y H:i', strtotime($t['departure_time'])) ?></p>
                         <p><i class="bi bi-chair"></i> Koltuk(lar): <?= htmlspecialchars($t['seats']) ?></p>
                         <p><i class="bi bi-cash"></i> Fiyat: <strong><?= number_format($t['total_price'], 2) ?> ₺</strong></p>
@@ -158,7 +158,7 @@ foreach ($tickets as $t) {
                         <span class="badge bg-light text-danger">İptal</span>
                     </div>
                     <div class="ticket-body">
-                        <p><i class="bi bi-geo-alt-fill"></i> <?= htmlspecialchars($t['departure_city']) ?> → <?= htmlspecialchars($t['destination_city']) ?></p>
+                         <p><i class="bi bi-geo-alt-fill"></i> <?=Transliterator::create('tr-title')->transliterate(htmlspecialchars($t['departure_city'])) ?> → <?=Transliterator::create('tr-title')->transliterate(htmlspecialchars($t['destination_city'])) ?></p>
                         <p><i class="bi bi-calendar-event"></i> <?= date('d.m.Y H:i', strtotime($t['departure_time'])) ?></p>
                         <p><i class="bi bi-chair"></i> Koltuk(lar): <?= htmlspecialchars($t['seats']) ?></p>
                         <p><i class="bi bi-cash"></i> Fiyat: <strong><?= number_format($t['total_price'], 2) ?> ₺</strong></p>
